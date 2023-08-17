@@ -1,0 +1,16 @@
+<html>
+<head>
+    <title>My questions</title>
+</head>
+<body>
+    <h1> My questions</h1>
+    <ul>
+        {% for question in questions %}
+            <li>
+                {{ question.title }}
+                
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

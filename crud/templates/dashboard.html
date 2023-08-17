@@ -1,5 +1,43 @@
 <html>
 	<h1>This is the dashboard page</h1>
+	<p>Welcome, {{user.username}}!</p>
+	<a href="{% url 'logout' %}">Logout</a>
+	<a href="{% url 'homepage' %}">Home</a>
+	<a href="{% url 'addquestion' %}">Add question</a>
+	<a href="{% url 'my-questions' %}">My questions</a>
+	<br> <br>
+	<p>Find a question in our database</p>
+	<form method="get">
+        {{ form }}
+        <button type="submit">Search</button>
+    </form>
+	{% if questions %}
+		<h2>Results:</h2>
+		<ul>
+			{% for question in questions %}
+				<li><b>{{ question.title }}</b><br>{{ question.description }}</li>
+				<button class="showAwswer">Show answer</button>
+    
+				<div class="answer" style="display: none;">
+					<p><b>Answer</b></p>
+					<p>{{ question.answer }}</p>
+				</div>	
+			<br><br><hr>	
+			{% endfor %}
+			<script>
+				const buttons = document.querySelectorAll('.showAwswer');
+        
+       			buttons.forEach(button => {
+           			button.addEventListener('click', function() {
+                		const answer = this.nextElementSibling;
+                		answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+               			this.textContent = answer.style.display === 'block' ? 'Hide Answer' : 'Show answer';
+            		});
+       		 	});
+			</script>
+		</ul>
+	{% else %}
+		<h2>No questions found</h2>
+	{% endif %}
 
-	<a href="{% url 'logout' %}"/>Logout</a>
 </html>

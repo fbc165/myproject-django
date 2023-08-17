@@ -1,0 +1,13 @@
+<html>
+<head>
+    <title>Add question</title>
+</head>
+<body>
+    <h1>Add new question</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

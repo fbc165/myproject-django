@@ -1,11 +1,24 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from . forms import CreateUserForm, LoginForm
+from . forms import CreateUserForm, LoginForm, SearchForm, CreateQuestionForm
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from rest_framework import viewsets
+from django.contrib.auth.models import User
+from .serializers import UserSerializer
+from .models import Question
 
 # Create your views here.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+@login_required
+def myquestions(request):
+    questions = Question.objects.filter(creator=request.user)
+    return render(request, 'my-questions.html', {'questions': questions})
+
 def homepage(request):
     return render(request, 'home.html')
 
@@ -45,6 +58,36 @@ def logout(request):
     auth.logout(request)
     return redirect("homepage")
 
+def addquestion(request):
+    if request.method == 'POST':
+        form = CreateQuestionForm(request.POST)
+        if form.is_valid():
+            question = form.save(commit=False)
+            question.creator = request.user
+            question.save()
+           # form.save()  # Salva a nova pergunta no banco de dados
+            return redirect('dashboard')  # Redireciona para a lista de perguntas (crie a URL correspondente)
+    else:
+        form = CreateQuestionForm()
+    
+    return render(request, 'add.html', {'form': form})
+
 @login_required(login_url="my-login")
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    form = SearchForm(request.GET)
+    questions = []
+    exam = None
+    subject = None
+
+    if form.is_valid():
+        exam = form.cleaned_data['exam']
+        subject = form.cleaned_data['subject']
+        
+    if exam and subject:
+        questions = Question.objects.filter(exam=exam, subject=subject)
+    elif exam:
+        questions = Question.objects.filter(exam=exam)
+    elif subject:
+        questions = Question.objects.filter(subject=subject)
+
+    return render(request, 'dashboard.html', {'form': form, 'questions': questions})
