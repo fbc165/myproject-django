@@ -1,6 +1,8 @@
 <html>
-	<h1>Register here, please</h1>
-
+	<h1>Register</h1>
+	<hr>
+	<a href="{% url 'homepage' %}">Home</a>
+	<br>
 	<form method="POST" autocomplete="off">
 		{% csrf_token %}
 

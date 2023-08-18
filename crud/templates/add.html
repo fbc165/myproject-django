@@ -4,9 +4,18 @@
 </head>
 <body>
     <h1>Add new question</h1>
+    <hr>
+	<a href="{% url 'homepage' %}">Home</a>
+	<br>
+	<a href="{% url 'logout' %}">Logout</a>
+	<br>
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+	<br>
+    <a href="{% url 'my-questions' %}">My Questions</a>
+	<br>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_p}}
         <button type="submit">Add</button>
     </form>
 </body>

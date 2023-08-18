@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from . forms import CreateUserForm, LoginForm, SearchForm, CreateQuestionForm
 from django.contrib.auth.models import auth
@@ -18,6 +18,14 @@ class UserViewSet(viewsets.ModelViewSet):
 def myquestions(request):
     questions = Question.objects.filter(creator=request.user)
     return render(request, 'my-questions.html', {'questions': questions})
+
+@login_required
+def deletequestion(request, question_id):
+    question = get_object_or_404(Question, pk=question_id, creator=request.user)
+    if request.method == 'POST':
+        question.delete()
+    return redirect('my-questions')
+    
 
 def homepage(request):
     return render(request, 'home.html')
@@ -58,6 +66,7 @@ def logout(request):
     auth.logout(request)
     return redirect("homepage")
 
+@login_required(login_url="my-login")
 def addquestion(request):
     if request.method == 'POST':
         form = CreateQuestionForm(request.POST)
@@ -66,7 +75,7 @@ def addquestion(request):
             question.creator = request.user
             question.save()
            # form.save()  # Salva a nova pergunta no banco de dados
-            return redirect('dashboard')  # Redireciona para a lista de perguntas (crie a URL correspondente)
+            return redirect('my-questions')  # Redireciona para a lista de perguntas (crie a URL correspondente)
     else:
         form = CreateQuestionForm()
     

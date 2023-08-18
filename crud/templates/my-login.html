@@ -1,6 +1,18 @@
 <html>
 	<h1>Login here</h1>
-
+	{% if user.is_authenticated %}
+		<p>Logged as {{user.username}}</p>
+	{% endif %}
+	<hr>
+	<a href="{% url 'homepage' %}">Home</a>
+	<br>
+	
+	{% if user.is_authenticated %}
+		<a href="{% url 'logout' %}">Logout</a>
+		<br>
+		<a href="{% url 'dashboard' %}">Dashboard</a>
+	{% endif %}
+	<br>
 	<form method="POST" autocomplete="off">
 		{% csrf_token %}
 

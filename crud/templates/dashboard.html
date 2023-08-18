@@ -1,9 +1,13 @@
 <html>
-	<h1>This is the dashboard page</h1>
+	<h1>QUESTIONS ROOM</h1>
 	<p>Welcome, {{user.username}}!</p>
-	<a href="{% url 'logout' %}">Logout</a>
+	<hr>
 	<a href="{% url 'homepage' %}">Home</a>
+	<br>
+	<a href="{% url 'logout' %}">Logout</a>
+	<br>
 	<a href="{% url 'addquestion' %}">Add question</a>
+	<br>
 	<a href="{% url 'my-questions' %}">My questions</a>
 	<br> <br>
 	<p>Find a question in our database</p>
