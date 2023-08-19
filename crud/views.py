@@ -87,7 +87,7 @@ def dashboard(request):
     questions = []
     exam = None
     subject = None
-
+    users = User.objects.all()
     if form.is_valid():
         exam = form.cleaned_data['exam']
         subject = form.cleaned_data['subject']
@@ -99,4 +99,4 @@ def dashboard(request):
     elif subject:
         questions = Question.objects.filter(subject=subject)
 
-    return render(request, 'dashboard.html', {'form': form, 'questions': questions})
+    return render(request, 'dashboard.html', {'form': form, 'questions': questions })

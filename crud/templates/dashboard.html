@@ -19,7 +19,7 @@
 		<h2>Results:</h2>
 		<ul>
 			{% for question in questions %}
-				<li><b>{{ question.title }}</b><br>{{ question.description }}</li>
+				<li><b>{{ question.title }} &nbsp; &nbsp; &nbsp;Created by: </b>{{question.creator }} [{{ question.creator.email }}] <br>{{ question.description }}</li>
 				<button class="showAwswer">Show answer</button>
     
 				<div class="answer" style="display: none;">
