@@ -8,7 +8,9 @@ class Question(models.Model):
     exam = models.CharField(max_length=10)
     subject = models.CharField(max_length=10)
     answer = models.TextField(max_length=300)
-    creator = models.ForeignKey(User, on_delete=models.CASCADE, default='', )
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, default='')
+    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
 
     def __str__(self):
         return self.title
+

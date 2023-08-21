@@ -32,7 +32,10 @@ class CreateQuestionForm(forms.ModelForm):
 
     class Meta:
         model = Question
-        fields = ['title', 'description', 'exam', 'subject', 'answer']
+        fields = ['title', 'description', 'exam', 'subject', 'answer', 'image']
 
     
     exam = forms.ChoiceField(choices=EXAM_CHOICES)
+
+
+    

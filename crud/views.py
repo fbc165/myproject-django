@@ -69,12 +69,13 @@ def logout(request):
 @login_required(login_url="my-login")
 def addquestion(request):
     if request.method == 'POST':
-        form = CreateQuestionForm(request.POST)
+        form = CreateQuestionForm(request.POST, request.FILES)
         if form.is_valid():
             question = form.save(commit=False)
             question.creator = request.user
             question.save()
            # form.save()  # Salva a nova pergunta no banco de dados
+
             return redirect('my-questions')  # Redireciona para a lista de perguntas (crie a URL correspondente)
     else:
         form = CreateQuestionForm()

@@ -21,11 +21,16 @@
 			{% for question in questions %}
 				<li><b>{{ question.title }} &nbsp; &nbsp; &nbsp;Created by: </b>{{question.creator }} [{{ question.creator.email }}] <br>{{ question.description }}</li>
 				<button class="showAwswer">Show answer</button>
-    
+				
 				<div class="answer" style="display: none;">
 					<p><b>Answer</b></p>
 					<p>{{ question.answer }}</p>
 				</div>	
+				{% if question.image %}
+					<a href="{{ question.image.url }}" target="_blank">
+						<button>Ver Imagem</button>
+					</a>
+    			{% endif %}
 			<br><br><hr>	
 			{% endfor %}
 			<script>
