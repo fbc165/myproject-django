@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>My questions</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <h1> My questions</h1>
+    <hr>
+    <div class="nav-menu">
+        <a href="{% url 'homepage' %}">Home</a>
+        <a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'addquestion' %}">Add question</a>
+        <a href="{% url 'my-questions' %}">My questions</a>
+    </div>
+    <ul>
+        {% for question in questions %}
+            <div class="search-form">
+                <p><b>{{ question.title }}</b></p>
+                <p>{{ question.description }}</p>
+                <!-- Botão de Exclusão -->
+                <form action="{% url 'deletequestion' question.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        {% endfor %}
+    </ul>
+</body>
+</html>

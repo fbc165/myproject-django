@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="static/css/styles.css">
+	</head>
+	
+	<body>
+		
+		<h1>TRAINING ROOM</h1>
+		{% if user.is_authenticated %}
+			<p>Logged as {{user.username}}</p>
+		{% endif %}
+		
+		<hr>
+		<div class="nav-menu">
+			<a href="{% url 'register' %}"/>Register</a>
+			<a href="{% url 'my-login' %}"/>Login</a>
+			<a href="{% url 'logout' %}"/>Logout</a>
+			<a href="{% url 'dashboard' %}"/>Dashboard</a>
+		</div>
+		</div>
+	</body>
+</html>

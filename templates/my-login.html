@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="static/css/styles.css">
+	</head>
+	<h1>Login here</h1>
+	{% if user.is_authenticated %}
+		<p>Logged as {{user.username}}</p>
+	{% endif %}
+	<hr>
+	<div class="nav-menu">
+		<a href="{% url 'homepage' %}">Home</a>
+		<br>
+	</div>
+	{% if user.is_authenticated %}
+		<a href="{% url 'logout' %}">Logout</a>
+		<br>
+		<a href="{% url 'dashboard' %}">Dashboard</a>
+	{% endif %}
+	<br>
+	<div class="search-form">
+		<form method="POST" autocomplete="off">
+			{% csrf_token %}
+
+			{{loginform.as_p}}
+
+			<input type="submit" value="Login"/>
+		</form>
+	</div>
+</html>

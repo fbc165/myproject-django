@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <h1>QUESTIONS ROOM</h1>
+    <p>Welcome, {{ user.username }}!</p>
+    <hr>
+	<div class="nav-menu">
+        <a href="{% url 'homepage' %}">Home</a>
+        <a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'addquestion' %}">Add question</a>
+        <a href="{% url 'my-questions' %}">My questions</a>
+    </div>
+    <div class="search-form">
+        <p>Find a question in our database</p>
+        <form method="get">
+            {{ form }}
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    {% if questions %}
+        <h2>Results:</h2>
+        <ul>
+            {% for question in questions %}
+                <li class="question">
+                    <b>{{ question.title }} &nbsp; &nbsp; &nbsp;Created by: </b>{{ question.creator }} [{{ question.creator.email }}] <br>
+                    {{ question.description }}
+                    <button class="showAnswer">Show Answer</button>
+                    <div class="answer">
+                        <p><b>Answer</b></p>
+                        <p>{{ question.answer }}</p>
+                    </div>
+                    {% if question.image %}
+                        <div class="image-link">
+                            <a href="{{ question.image.url }}" target="_blank">
+                                <button>View Image</button>
+                            </a>
+                        </div>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h2>No questions found</h2>
+    {% endif %}
+
+    <script>
+        const buttons = document.querySelectorAll('.showAnswer');
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+                this.textContent = answer.style.display === 'block' ? 'Hide Answer' : 'Show Answer';
+            });
+        });
+    </script>
+</body>
+</html>

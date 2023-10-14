@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Add question</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <h1>Add new question</h1>
+    <hr>
+	<div class="nav-menu">
+        <a href="{% url 'homepage' %}">Home</a>
+        <a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'addquestion' %}">Add question</a>
+        <a href="{% url 'my-questions' %}">My questions</a>
+    </div>
+    <div class="search-form">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <button type="submit">Add</button>
+        </form>
+    </div>
+</body>
+</html>
