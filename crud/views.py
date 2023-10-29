@@ -10,6 +10,19 @@ from .serializers import UserSerializer, QuestionSerializer
 from .models import Question
 
 # Create your views here.
+
+
+def personal_page(request):
+    data = {
+        'about_text': "Eu sou um desenvolvedor de software apaixonado por desenvolvimento backend. Tenho experiência em...",
+        'skills': ["Python", "Django", "SQL", "APIs REST"],
+        'experience_text': "Descreva sua experiência profissional aqui, incluindo empregos anteriores relacionados a desenvolvimento backend.",
+        'education_text': "Indique sua formação acadêmica, cursos relevantes e certificações.",
+        'contact_email': "seu-email@example.com"
+    }
+    return render(request, 'personal.html', context=data)
+
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -32,7 +45,7 @@ def deletequestion(request, question_id):
     
 
 def homepage(request):
-    return render(request, 'home.html')
+    return render(request, 'base.html')
 
 def register(request):
     form = CreateUserForm()
@@ -88,20 +101,19 @@ def addquestion(request):
 
 @login_required(login_url="my-login")
 def dashboard(request):
-    form = SearchForm(request.GET)
-    questions = []
-    exam = None
-    subject = None
-    users = User.objects.all()
-    if form.is_valid():
-        exam = form.cleaned_data['exam']
-        subject = form.cleaned_data['subject']
-        
-    if exam and subject:
-        questions = Question.objects.filter(exam=exam, subject=subject)
-    elif exam:
-        questions = Question.objects.filter(exam=exam)
-    elif subject:
-        questions = Question.objects.filter(subject=subject)
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            exam = form.cleaned_data['exam']
+            subject = form.cleaned_data['subject']
+            if subject == "All":
+                questions = Question.objects.filter(exam=exam)
+            else:
+                questions = Question.objects.filter(exam=exam, subject=subject)
 
+            return render(request, 'dashboard.html', {'form': form, 'questions': questions})  
+    else:
+        form = SearchForm()
+        questions = None
     return render(request, 'dashboard.html', {'form': form, 'questions': questions })
+    

@@ -1,17 +1,6 @@
-<html>
-<head>
-    <title>My questions</title>
-    <link rel="stylesheet" href="static/css/styles.css">
-</head>
-<body>
-    <h1> My questions</h1>
-    <hr>
-    <div class="nav-menu">
-        <a href="{% url 'homepage' %}">Home</a>
-        <a href="{% url 'logout' %}">Logout</a>
-        <a href="{% url 'addquestion' %}">Add question</a>
-        <a href="{% url 'my-questions' %}">My questions</a>
-    </div>
+{% extends "base.html" %}
+
+{% block content %}
     <ul>
         {% for question in questions %}
             <div class="search-form">
@@ -25,5 +14,4 @@
             </div>
         {% endfor %}
     </ul>
-</body>
-</html>
+    {% endblock %}

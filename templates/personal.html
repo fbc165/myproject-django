@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fabricio Alves</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/heroicons@1.0.1/dist/heroicons.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+
+        
+        <style>
+            /* Personalização das cores e estilos */
+            body {
+                background-color: #f0f0f0; /* Fundo cinza mais claro */
+                color: #333; /* Texto preto */
+                font-family: 'Roboto', sans-serif; /* Aplicar a fonte Roboto a todo o conteúdo da página */
+            }
+            h1, h2, h3 {
+                font-family: 'Roboto', sans-serif; /* Aplicar a fonte Roboto a todo o conteúdo da página */
+                color: #5e2828;
+            }
+            header {
+                background: linear-gradient(135deg, #3498db, #8e44ad); /* Fundo gradiente azul e roxo */
+                color: #fff; /* Texto branco */
+                text-align: center;
+                padding: 20px;
+            }
+            nav {
+                background-color: #2c3e50; /* Fundo azul escuro */
+            }
+            nav a {
+                color: #ecf0f1; /* Texto branco mais suave */
+            }
+            nav a:hover {
+                color: #f1c40f; /* Texto amarelo ao passar o mouse */
+            }
+            section {
+                background-color: #ecf0f1; /* Fundo cinza claro para seções de conteúdo */
+                border: 1px solid hsl(204, 8%, 76%); /* Borda cinza mais suave */
+                padding: 20px;
+                margin: 20px 0;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            }
+            
+            .section-with-gradient {
+                background: linear-gradient(135deg, #3498db, #8e44ad);
+                color: #fff; /* Cor do texto branca */
+            }
+            .custom-font {
+                font-family: 'Dancing Script', cursive;
+                font-size: 5em; /* Ajuste o tamanho da fonte conforme necessário */
+            }
+        </style>
+    </head>
+<body>
+    <header class="bg-primary text-white text-center py-5">
+        <i class="fab fa-python fa-2x"></i> <!-- Ícone Python -->
+        <i class="fas fa-code fa-2x"></i> <!-- Ícone de código para desenvolvimento -->
+        <i class="fas fa-database fa-2x"></i> <!-- Ícone de banco de dados para SQL -->
+        <h1 class="custom-font">Fabricio Alves de Souza</h1> <!-- Aplicando a nova fonte personalizada -->
+        <p class="lead">Backend Developer | Seeking Internship Opportunities | Interested in Cybersecurity and Backend Development</p>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <ul class="navbar-nav mr-auto"> <!-- Use mr-auto para alinhar à esquerda -->
+            <li class="nav-item">
+                <a class="nav-link" href="#about">About Me</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#languages">Languages</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#education">Education</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact</a>
+            </li>
+
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/fabricioalves206" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://www.linkedin.com/in/fabricioalves1" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <section class="mb-4 pattern-background">
+                    <h2 class="text-primary"><i class="fas fa-laptop-code"></i> Personal Projects</h2>
+                    <p><strong><span style="color: #d60b0b; font-family: 'Your-Fancy-Font', cursive; font-size: 24px;">Training Room</span></strong><br>
+                        <em>A Django application for certification exam preparation.</em>
+                    </p>
+                    <p>Training Room is a platform that allows users to prepare for certification exams through practical questions. Key features include:</p>
+                    <ul>
+                        <li>User registration and personalized dashboard.</li>
+                        <li>Addition of questions with detailed information, including related area and certification.</li>
+                        <li>View questions created by other users.</li>
+                        <li>Identification of the question creator for contact.</li>
+                    </ul>
+                    <p>This application is designed to help companies create a customized preparation environment with a clean and effective question database.</p>
+                    <p>The Training Room project provides a comprehensive platform for exam preparation and question-solving. Users can register, access a dashboard with questions related to various certification exams, and create their questions for others to solve. Each question can include additional information, such as the relevant area and certification category, facilitating easy filtering.</p>
+                    <p>Furthermore, Training Room includes an API that allows other companies in the same industry to access and utilize the database of solved questions. This collaborative feature enables access to questions created by partner companies, fostering a community of knowledge sharing and exam preparation.</p>
+                    <p>For a live demonstration, you can visit the <a href="{% url 'homepage' %}" target="_blank">Training Room Demo</a>.</p>
+                    
+
+                </section>
+            </div>
+            <div class="col-md-6">
+        <section class="mb-4 " id="about">
+            <h2 class="text-primary"><i class="fas fa-user"></i> About Me</h2>
+            <p>I am a passionate software developer specializing in backend development. With a background in Control and Automation Engineering, I have a strong foundation in Python, Django, and SQL. I excel in designing robust and scalable APIs using Django Rest Framework, and I am experienced in database management, including SQLite.</p>
+            <p>My development toolkit includes Git, GitLab, and GitHub for version control, as well as Docker and AWS (Amazon EC2) for deployment. I'm also proficient in C, C++, and Java, specifically with Spring Boot for web applications. I thrive in Agile Scrum methodology and am known for my problem-solving skills, critical analysis, and teamwork abilities.</p>
+            <p>As hobbies, I enjoy exploring incredible places and capturing them through photography. You can check out some of my travel photos on my <a href="https://pinterest.com/fabricioalves2698/" target="_blank">Pinterest profile</a>. I'm an avid player and spectator of Valorant, and I contribute to the Brazilian Valorant community on Twitch. In my free time, I love playing the bass guitar and immersing myself in music. Additionally, I'm fascinated by new and emerging technologies, which drive my continuous learning and exploration.</p>
+        </section>
+        <section class="mb-4" id="skills">
+            <h2 class="text-primary"><i class="fas fa-cogs"></i> Skills</h2>
+            <ul class="list-inline">
+                <li class="list-inline-item">Python |</li>
+                <li class="list-inline-item">Django |</li>
+                <li class="list-inline-item">API Development |</li>
+                <li class="list-inline-item">Django Rest Framework |</li>
+                <li class="list-inline-item">SQL |</li>
+                <li class="list-inline-item">Pandas |</li>
+                <li class="list-inline-item">SQLite |</li>
+                <li class="list-inline-item">Git |</li>
+                <li class="list-inline-item">GitLab |</li>
+                <li class="list-inline-item">GitHub |</li>
+                <li class="list-inline-item">Docker |</li>
+                <li class="list-inline-item">AWS (Amazon EC2) |</li>
+                <li class="list-inline-item">C |</li>
+                <li class="list-inline-item">C++ |</li>
+                <li class="list-inline-item">Java (Spring Boot) |</li>
+                <li class="list-inline-item">Agile Scrum Methodology |</li>
+            </ul>
+        </section>
+        
+        
+        <section class="mb-4" id="languages">
+            <h2 class="text-primary"><i class="fas fa-globe"></i> Languages</h2>
+            <p><strong>Portuguese</strong> - Native Language</p>
+            <p><strong>English</strong> - B2 (TOEIC)</p>
+            <p><strong>French</strong> - C1 (TCF Tout Public)</p>
+        </section>
+        <section class="mb-4" id="projects">
+            <h2 class="text-primary"><i class="fas fa-laptop-code"></i> Academic Projects</h2>
+            <p><strong>EcoResponsible Project: La Quête du Grade</strong><br>
+            École Nationale d’Ingénieurs de Brest<br>
+            09/2023 - Present<br>
+            Brest, Brittany, France</p>
+            <p>Backend web development project at ENIB aimed at simplifying processes for objective and transparent assessment of students' competencies.</p>
+            <ul>
+                <li>Used Python, Django, and Django Rest Framework to create robust and scalable backend features, including setting up APIs, managing databases, and securing applications.</li>
+                <li>Utilized the Vue.js framework to build the frontend and design UI/UX elements, such as graphic design, ergonomics, and accessibility.</li>
+                <li>Managed software project, including goal definition, planning, resource management, monitoring, and evaluation using Sphinx generator.</li>
+            </ul>
+            <p>Tools: Visual Studio Code, Python, Django, Django Rest Framework, HTML, CSS, Sphinx, Git, GitLab, Linux, Jira, Teamwork, Agile Scrum Methodology.</p>
+            <p><strong>Research Project</strong><br>
+                Universidade Federal de Itajubá<br>
+                2020 - 9 months<br>
+                Itajubá, Minas Gerais, Brazil</p>
+                <p>Development of an energy consumption disaggregation product capable of providing appliance-level analyses based on a single electricity meter.</p>
+                <ul>
+                    <li>Disaggregated loads using machine learning techniques in Python using the open-source Non-Intrusive Load Monitoring toolkit (NILMTK).</li>
+                    <li>Used Node-RED to connect to the smart meter and create a dashboard with charts and information for the user.</li>
+                    <li>Set up an AWS server to run machine learning code, collect and store consumption data in a MySQL database.</li>
+                </ul>
+                <p>Tools: Python, NILMTK, Pandas, Matplotlib, Data Cleaning, Machine Learning, Data Visualization, Amazon Web Services EC2, SSH, Git, Github, Node-Red, MySQL, LaTeX, Open-mindedness.</p>
+            
+        </section>
+        
+        <section class="mb-4" id="experience">
+            <h2 class="text-primary"><i class="fas fa-briefcase"></i> Professional Experience</h2>
+            <p><strong>Assistant Engineer Intern</strong><br>
+            Automalógica<br>
+            2022 - 10 months<br>
+            Jundiaí, São Paulo, Brazil</p>
+            <p>Involved in the SICAR project (Integrated System for Automatic Collection of Records):</p>
+            <ul>
+                <li>Remote configuration of Windows machines to function as energy substation hubs.</li>
+                <li>Network configuration to integrate the hubs containing the SICAR system into the energy substation.</li>
+                <li>Client relations to ensure project transparency and customer satisfaction.</li>
+                <li>Utilized automation of processes to send critical information to the regulatory agency for electrical energy in Brazil.</li>
+            </ul>
+            <p>Tools: Windows XP/Vista/10/11, Remote Desktop, WireShark, SmartSheet, Client Relations, Persuasion, Organizational Skills.</p>
+        </section>
+        
+        <section class="mb-4" id="education">
+            <h2 class="text-primary"><i class="fas fa-graduation-cap"></i> Education</h2>
+            <p><strong>Generalist Engineering</strong><br>École Nationale d’Ingénieurs de Brest (ENIB)<br>2022 - 2024<br>Brest, Brittany, France</p>
+            <p><strong>Control and Automation Engineering</strong><br>Universidade Federal de Itajubá (UNIFEI)<br>2018 - 2024<br>Itajubá, Minas Gerais, Brazil</p>
+        </section>
+        <section class="mb-5" id="contact">
+            <h2 class="text-primary"><i class="fas fa-envelope"></i> Contact</h2>
+            <p><i class="far fa-envelope"></i> E-mail: fabricio.alves2698@gmail.com</p>
+        </section>
+    </div>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+</body>
+</html>

@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 class Question(models.Model):
     title = models.CharField(max_length=50, unique=True)
     description = models.TextField(max_length=300)
-    exam = models.CharField(max_length=10)
-    subject = models.CharField(max_length=10)
+    exam = models.CharField(max_length=50)
+    subject = models.CharField(max_length=50)
     answer = models.TextField(max_length=300)
     creator = models.ForeignKey(User, on_delete=models.CASCADE, default='')
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
